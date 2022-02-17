@@ -22,16 +22,27 @@ class InsertVSData :
                 
         # self.conn = self.engine.raw_connection()
         # self.df.to_sql('vs_table',self.engine,if_exists='replace')
-
-
-    def insertData(self) :
+        # self.strip_lv
+        # self.unitY
+        # self.unitX
+        # self.posX
+        # self.posY
         
-        for i in range(self.vsimg.defectNum) :
+        
+
+
+
+    def excuteProcedure(self) :
+        # self.cursor.callproc('pro_test','pine1-1')
+        # self.conn.cursor().execute(text('call pro_test(:pine1-1)') )
+        params = ['pine1-1']        
+        self.conn.cursor().callproc('pro_test',params)        
+        self.conn.commit()
+        # results = list(cursor.fetchall())
+
+        self.conn.close()            
             
             
-
-
-
 
     def pg_connect(self,user, password, db, host, port=3306):
         url = 'mysql://{}:{}@{}/{}'.format(user, password, host, db)
